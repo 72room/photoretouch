@@ -43,70 +43,9 @@
     <hr class="rule">
 
     <div class="console">
-      <div class="group">
-        <span class="tag">Mask</span>
-        <div class="seg" role="radiogroup" aria-label="Mask type">
-          <label><input type="radio" name="effect" value="blur" checked> Blur</label>
-          <label><input type="radio" name="effect" value="mosaic"> Mosaic</label>
-          <label><input type="radio" name="effect" value="sticker"> Sticker</label>
-        </div>
-      </div>
-
-      <div class="group">
-        <span class="tag">Adjust</span>
-        <div class="row">
-          <fieldset id="blurctl"><label>Strength <input id="blur" type="range" min="2" max="60" value="16"></label></fieldset>
-          <fieldset id="blockctl" hidden><label>Block <input id="block" type="range" min="4" max="40" value="12"></label></fieldset>
-          <fieldset id="featherctl"><label>Feather <input id="feather" type="range" min="0" max="80" value="30"></label></fieldset>
-        </div>
-      </div>
-
-      <div class="group">
-        <span class="tag">Tune</span>
-        <div class="row">
-          <label>Bright <input id="t-bright" type="range" min="50" max="150" value="100"></label>
-          <label>Contrast <input id="t-contrast" type="range" min="50" max="150" value="100"></label>
-          <label>Satur <input id="t-sat" type="range" min="0" max="200" value="100"></label>
-          <label>Temp <input id="t-temp" type="range" min="-100" max="100" value="0"></label>
-          <label>B&amp;W <input id="t-bw" type="range" min="0" max="100" value="0"></label>
-          <label>Vignette <input id="t-vig" type="range" min="0" max="100" value="0"></label>
-        </div>
-      </div>
-
-      <div class="group">
-        <span class="tag">Presets</span>
-        <div class="row" id="presets"></div>
-      </div>
-
-      <div class="group">
-        <span class="tag">Sticker</span>
-        <fieldset id="stickerctl" hidden>
-          <div class="row">
-            <span id="stickers"></span>
-            <label class="link">Upload PNG<input id="pngsticker" type="file" accept="image/png" hidden></label>
-          </div>
-        </fieldset>
-      </div>
-
-      <div class="group">
-        <span class="tag">Faces</span>
-        <div class="row">
-          <button id="detect">Detect faces</button>
-          <button id="clearFaces">Clear faces</button>
-          <button id="draw">Draw face</button>
-        </div>
-      </div>
-
-      <div class="group">
-        <span class="tag">Apply</span>
-        <div class="row">
-          <button id="applyAll">Apply to all faces</button>
-          <button id="clearAll">Clear masks</button>
-        </div>
-      </div>
-
-      <div class="group">
-        <span class="tag">Crop</span>
+      <!-- 1 · CROP -->
+      <section class="panel">
+        <h2 class="panel-head"><span class="step-no">1</span> Crop</h2>
         <div class="row">
           <button id="crop">Crop</button>
           <label>Ratio
@@ -124,10 +63,69 @@
           </div>
           <button id="clearCrop">Clear crop</button>
         </div>
-      </div>
+      </section>
 
-      <div class="group">
-        <span class="tag">Output</span>
+      <!-- 2 · TUNE -->
+      <section class="panel">
+        <h2 class="panel-head"><span class="step-no">2</span> Tune</h2>
+        <div class="sub">
+          <span class="tag">Presets</span>
+          <div class="row" id="presets"></div>
+        </div>
+        <div class="sub">
+          <span class="tag">Adjust</span>
+          <div class="row">
+            <label>Bright <input id="t-bright" type="range" min="50" max="150" value="100"></label>
+            <label>Contrast <input id="t-contrast" type="range" min="50" max="150" value="100"></label>
+            <label>Satur <input id="t-sat" type="range" min="0" max="200" value="100"></label>
+            <label>Temp <input id="t-temp" type="range" min="-100" max="100" value="0"></label>
+            <label>B&amp;W <input id="t-bw" type="range" min="0" max="100" value="0"></label>
+            <label>Vignette <input id="t-vig" type="range" min="0" max="100" value="0"></label>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 · REDACT -->
+      <section class="panel">
+        <h2 class="panel-head"><span class="step-no">3</span> Redact</h2>
+        <div class="sub">
+          <span class="tag">Faces</span>
+          <div class="row">
+            <button id="detect">Detect faces</button>
+            <button id="clearFaces">Clear faces</button>
+            <button id="draw">Draw face</button>
+          </div>
+        </div>
+        <div class="sub">
+          <span class="tag">Mask</span>
+          <div class="row">
+            <div class="seg" role="radiogroup" aria-label="Mask type">
+              <label><input type="radio" name="effect" value="blur" checked> Blur</label>
+              <label><input type="radio" name="effect" value="mosaic"> Mosaic</label>
+              <label><input type="radio" name="effect" value="sticker"> Sticker</label>
+            </div>
+            <fieldset id="blurctl"><label>Strength <input id="blur" type="range" min="2" max="60" value="16"></label></fieldset>
+            <fieldset id="blockctl" hidden><label>Block <input id="block" type="range" min="4" max="40" value="12"></label></fieldset>
+            <fieldset id="featherctl"><label>Feather <input id="feather" type="range" min="0" max="80" value="30"></label></fieldset>
+          </div>
+          <fieldset id="stickerctl" hidden>
+            <div class="row">
+              <span id="stickers"></span>
+              <label class="link">Upload PNG<input id="pngsticker" type="file" accept="image/png" hidden></label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="sub">
+          <div class="row">
+            <button id="applyAll">Apply to all faces</button>
+            <button id="clearAll">Clear masks</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 · EXPORT -->
+      <section class="panel">
+        <h2 class="panel-head"><span class="step-no">4</span> Export</h2>
         <div class="row">
           <label>Prefix <input id="prefix" type="text" value="redacted-" size="9"></label>
           <label>Format
@@ -140,7 +138,7 @@
           <button id="zip">Download all</button>
           <button id="reset">Reset</button>
         </div>
-      </div>
+      </section>
     </div>
 
     <label id="drop" class="drop">
